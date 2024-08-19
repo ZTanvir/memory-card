@@ -1,0 +1,25 @@
+.audioPlayer {
+  display: inline-block;
+  border-radius: 50%;
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none; /* Standard syntax */
+}
+.audioPlayer #playPauseBtn {
+  appearance: none;
+  border: 1px solid #17233e;
+  outline: none;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  background-color: #17233e;
+  color: white;
+  transition: transform 1s ease-in-out;
+}
+.audioPlayer #playPauseBtn:hover {
+  transform: scale(1.2);
+}
