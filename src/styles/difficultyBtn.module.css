@@ -10,7 +10,11 @@
   color: white;
   font-weight: bolder;
   font-size: 1.8rem;
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none; /* Standard syntax */
 }
 .difficultyBtn:hover {
   background-color: #2f6131;
+  opacity: 0.8;
 }

@@ -1,15 +1,14 @@
 import DifficultyBtn from "./DifficultyBtn";
-import PokemonLogo from "./PokemonLogo";
 import styles from "../styles/homeScreen.module.css";
 
-const HomeScreen = ({ handleDifficultyBtn }) => {
+const HomeScreen = ({ handhandleDifficultyBtn }) => {
   return (
     <section className={styles.homeScreenContainer}>
       <h2>Memory Game</h2>
       <div className={styles.allDifficultyBtn}>
-        <DifficultyBtn text={"Easy"} handleBtn={handleDifficultyBtn} />
-        <DifficultyBtn text={"Medium"} handleBtn={handleDifficultyBtn} />
-        <DifficultyBtn text={"Hard"} handleBtn={handleDifficultyBtn} />
+        <DifficultyBtn text={"Easy"} handleBtn={handhandleDifficultyBtn} />
+        <DifficultyBtn text={"Medium"} handleBtn={handhandleDifficultyBtn} />
+        <DifficultyBtn text={"Hard"} handleBtn={handhandleDifficultyBtn} />
       </div>
     </section>
   );

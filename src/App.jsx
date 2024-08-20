@@ -11,6 +11,12 @@ import { useRef } from "react";
 function App() {
   const interfaceMusic = useRef(null); //menu music
 
+  const handhandleDifficultyBtn = (e) => {
+    console.log(interfaceMusic);
+    interfaceMusic.current.playAudio();
+    console.log(e.target.dataset.value);
+  };
+
   return (
     <>
       <header>
@@ -19,7 +25,7 @@ function App() {
         </div>
       </header>
       <main className="homeScreen">
-        <HomeScreen />
+        <HomeScreen handhandleDifficultyBtn={handhandleDifficultyBtn} />
       </main>
       <div className="overlay"></div>
       <video
