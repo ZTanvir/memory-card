@@ -2,11 +2,12 @@ import { useState } from "react";
 import styles from "../styles/gameInstruction.module.css";
 import pokemonMew from "../assets/images/pokemonMew.png";
 
-const GameInstruction = ({ instructionList }) => {
+const GameInstruction = ({ instructionList, audioDom }) => {
   const [isHideInstruction, setIsHideInstruction] = useState(true);
 
   const handleShowHide = (e) => {
     setIsHideInstruction(!isHideInstruction);
+    audioDom.current.playAudio();
   };
 
   return (

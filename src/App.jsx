@@ -4,15 +4,24 @@ import GameInstruction from "./components/GameInstruction";
 import mayPokemon from "./assets/video/maypokemon.mp4";
 import clickingInterface from "./assets/audios/clickingInterfaceSelect.mp3";
 import bgMusic from "./assets/audios/bgMusic.mp3";
+import { useRef } from "react";
 
 function App() {
+  const interfaceMusic = useRef(null); //menu music
+
   return (
     <>
       <main className="homeScreen">
         <h1>Pokemon</h1>
         <h2>Memory Game</h2>
         <div className="levelBtn">
-          <button>Easy</button>
+          <button
+            onClick={() => {
+              interfaceMusic.current.playAudio();
+            }}
+          >
+            Easy
+          </button>
           <button>Medium</button>
           <button>Hard</button>
         </div>
@@ -33,6 +42,7 @@ function App() {
             playStatus={false}
           />
           <AudioPlayManual
+            ref={interfaceMusic}
             src={clickingInterface}
             playIcon={"volume_up"}
             pauseIcon={"volume_off"}
@@ -45,6 +55,7 @@ function App() {
               1: "Don't click on the same card twice!",
               2: "Click on the POKEMON logo to go back.",
             }}
+            audioDom={interfaceMusic}
           />
         </div>
       </footer>
