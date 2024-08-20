@@ -10,7 +10,10 @@ const AudioPlayManual = forwardRef(
       return {
         playAudio() {
           audioEl.current.volume = 0.5;
-          audioEl.current.play();
+          if (isPlaying) {
+            // play only when interface music is set to play
+            audioEl.current.play();
+          }
         },
         pauseAudio() {
           audioEl.current.pause();
