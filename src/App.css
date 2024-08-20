@@ -66,27 +66,30 @@ h6 {
   flex-direction: column;
   padding: 1rem;
 }
-h1 {
-  color: white;
-  font-size: 5rem;
-  opacity: 0.8;
+.logo {
+  width: 250px;
 }
-h2 {
-  color: white;
-  font-size: 3rem;
+header {
+  height: 20vh;
 }
 .homeScreen {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
+  height: 60vh;
 }
-
-.bgVideo {
+.overlay {
   position: fixed;
   right: 0;
   bottom: 0;
   z-index: -1;
+  background-color: #7cc279;
+  opacity: 0.1;
+  width: 100%;
+  height: 100%;
+}
+.bgVideo {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  z-index: -2;
   width: 100%;
   height: 100%;
   object-fit: cover;

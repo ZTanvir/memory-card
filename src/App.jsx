@@ -1,6 +1,8 @@
 import "./App.css";
 import AudioPlayManual from "./components/AudioPlayManual";
 import GameInstruction from "./components/GameInstruction";
+import HomeScreen from "./components/HomeScreen";
+import PokemonLogo from "./components/PokemonLogo";
 import mayPokemon from "./assets/video/maypokemon.mp4";
 import clickingInterface from "./assets/audios/clickingInterfaceSelect.mp3";
 import bgMusic from "./assets/audios/bgMusic.mp3";
@@ -11,28 +13,22 @@ function App() {
 
   return (
     <>
-      <main className="homeScreen">
-        <h1>Pokemon</h1>
-        <h2>Memory Game</h2>
-        <div className="levelBtn">
-          <button
-            onClick={() => {
-              interfaceMusic.current.playAudio();
-            }}
-          >
-            Easy
-          </button>
-          <button>Medium</button>
-          <button>Hard</button>
+      <header>
+        <div className="logo">
+          <PokemonLogo />
         </div>
+      </header>
+      <main className="homeScreen">
+        <HomeScreen />
       </main>
-      {/* <video
+      <div className="overlay"></div>
+      <video
         className="bgVideo"
         src={mayPokemon}
         autoPlay={true}
         muted={true}
         loop={true}
-      /> */}
+      />
       <footer>
         <div className="gameBgMusic">
           <AudioPlayManual
