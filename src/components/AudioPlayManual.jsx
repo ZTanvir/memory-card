@@ -5,6 +5,13 @@ const AudioPlayManual = ({ src, playIcon, pauseIcon, playStatus }) => {
   const [isPlaying, setIsPlaying] = useState(playStatus);
   const audioEl = useRef(null);
 
+  const playAudio = () => {
+    audioEl.current.play();
+  };
+  const pauseAudio = () => {
+    audioEl.current.pause();
+  };
+
   const handlePlayPauseBtn = () => {
     const playStatus = !isPlaying;
     playStatus ? audioEl.current.play() : audioEl.current.pause();

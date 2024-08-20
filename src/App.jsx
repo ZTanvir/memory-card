@@ -2,6 +2,7 @@ import "./App.css";
 import AudioPlayManual from "./components/AudioPlayManual";
 import GameInstruction from "./components/GameInstruction";
 import mayPokemon from "./assets/video/maypokemon.mp4";
+import clickingInterface from "./assets/audios/clickingInterfaceSelect.mp3";
 import bgMusic from "./assets/audios/bgMusic.mp3";
 
 function App() {
@@ -32,7 +33,7 @@ function App() {
             playStatus={false}
           />
           <AudioPlayManual
-            src={bgMusic}
+            src={clickingInterface}
             playIcon={"volume_up"}
             pauseIcon={"volume_off"}
             playStatus={true}
