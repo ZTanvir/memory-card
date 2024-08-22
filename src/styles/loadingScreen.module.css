@@ -1,0 +1,20 @@
+.loadinScreenContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.pokeball {
+  animation: loadingEffect 1s infinite;
+}
+@keyframes loadingEffect {
+  0% {
+    transform: rotate(0) scale(0.5);
+  }
+  100% {
+    transform: rotate(360deg) scale(1);
+  }
+}
+.loadinScreenContainer p {
+  font-size: 1.5rem;
+}

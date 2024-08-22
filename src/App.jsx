@@ -9,9 +9,10 @@ import mayPokemon from "./assets/video/maypokemon.mp4";
 import clickingInterface from "./assets/audios/clickingInterfaceSelect.mp3";
 import bgMusic from "./assets/audios/bgMusic.mp3";
 import { useEffect, useRef, useState } from "react";
+import LoadingSceen from "./components/LoadingScreen";
 
 function App() {
-  const [screen, setScreen] = useState("home");
+  const [screen, setScreen] = useState("loading");
   const [pokemonData, setPokemonData] = useState([]);
   const interfaceMusic = useRef(null); //menu music
 
@@ -29,6 +30,7 @@ function App() {
     };
 
     let listOfRequest = [];
+    // get 1st 10 pokemon data
     for (let i = 0; i < 10; i++) {
       listOfRequest.push(getPokemon(generateRandomNum()));
     }
@@ -37,6 +39,9 @@ function App() {
       try {
         const result = await Promise.all(listOfRequest);
         setPokemonData([...result]);
+        setTimeout(() => {
+          setScreen("home");
+        }, 5000);
       } catch (err) {
         console.log("Error while getting pokemons data", err);
       }
@@ -52,7 +57,10 @@ function App() {
         </div>
       </header>
       <main className="homeScreen">
-        <HomeScreen handhandleDifficultyBtn={handhandleDifficultyBtn} />
+        {screen === "loading" && <LoadingSceen />}
+        {screen === "home" && pokemonData && (
+          <HomeScreen handhandleDifficultyBtn={handhandleDifficultyBtn} />
+        )}
       </main>
       <div className="overlay"></div>
       {/* <video
