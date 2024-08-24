@@ -5,11 +5,12 @@ import HomeScreen from "./components/HomeScreen";
 import PokemonLogo from "./components/PokemonLogo";
 import * as pokemonService from "./services/pokemonapi";
 import { generateRandomNum } from "../src/utils/helperFunctions";
+import LoadingSceen from "./components/LoadingScreen";
+import GameScreen from "./components/GameScreen";
 import mayPokemon from "./assets/video/maypokemon.mp4";
 import clickingInterface from "./assets/audios/clickingInterfaceSelect.mp3";
 import bgMusic from "./assets/audios/bgMusic.mp3";
 import { useEffect, useRef, useState } from "react";
-import LoadingSceen from "./components/LoadingScreen";
 
 function App() {
   const [screen, setScreen] = useState("loading");
@@ -18,7 +19,7 @@ function App() {
 
   const handhandleDifficultyBtn = (e) => {
     interfaceMusic.current.playAudio();
-    console.log(e.target.dataset.value);
+    setScreen(e.target.dataset.value.toLowerCase());
   };
 
   useEffect(() => {
@@ -61,6 +62,7 @@ function App() {
         {screen === "home" && pokemonData && (
           <HomeScreen handhandleDifficultyBtn={handhandleDifficultyBtn} />
         )}
+        {screen === "easy" && <GameScreen pokemonsData={pokemonData} />}
       </main>
       <div className="overlay"></div>
       {/* <video
