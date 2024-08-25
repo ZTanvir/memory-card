@@ -2,7 +2,9 @@ import PokemonCard from "./PokemonCard";
 const GameScreen = ({ pokemonsData }) => {
   console.log(pokemonsData);
 
-  const handleCard = () => {};
+  const handleCard = () => {
+    console.log("Click on card");
+  };
   return (
     <>
       {pokemonsData.length > 0 ? (
