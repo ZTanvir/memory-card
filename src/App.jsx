@@ -62,16 +62,22 @@ function App() {
         {screen === "home" && pokemonData && (
           <HomeScreen handhandleDifficultyBtn={handhandleDifficultyBtn} />
         )}
-        {screen === "easy" && <GameScreen pokemonsData={pokemonData} />}
+        {screen === "easy" && (
+          <GameScreen
+            pokemonsData={pokemonData}
+            initalPokemonsData={pokemonData.slice(0, 3)}
+            totalRound={5}
+          />
+        )}
       </main>
       <div className="overlay"></div>
-      <video
+      {/* <video
         className="bgVideo"
         src={mayPokemon}
         autoPlay={true}
         muted={true}
         loop={true}
-      />
+      /> */}
       <footer>
         <div className="gameBgMusic">
           <AudioPlayManual

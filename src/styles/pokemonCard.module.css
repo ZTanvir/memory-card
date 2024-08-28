@@ -5,6 +5,7 @@
   border-radius: 1rem;
   overflow: hidden;
   opacity: 0.9;
+  cursor: pointer;
 }
 .cardInner {
   transform-style: preserve-3d;
@@ -31,7 +32,10 @@
   backface-visibility: hidden;
   transform: rotateY(180deg);
 }
-
+.cardInner:hover {
+  /* transform: rotateY(180deg); */
+  opacity: 0.7;
+}
 :is(.cardInner, .cardFront, .cardBack) {
   position: absolute;
   width: 100%;
