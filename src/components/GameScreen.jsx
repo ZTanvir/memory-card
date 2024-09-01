@@ -6,16 +6,32 @@ const GameScreen = ({ pokemonsData, initalPokemonsData, totalRound }) => {
   const [displayCard, setDisplayCard] = useState(initalPokemonsData);
   const [selectedCard, setSelectedCard] = useState([]);
 
-  const unSelectCard = (allCards, selectCard) => {
+  const unSelectCard = (allCards = [], selectCard) => {
     const cardsList = allCards.filter(
       // return card that are not selected
       (deck) => !selectCard.map((item) => item.name).includes(deck.name)
     );
     return cardsList;
   };
+  // return a card which is not in already in display
+  const uniqueCard = (cardList = [], boardCard = []) => {
+    let boardCards = [...boardCard];
+
+    console.log("inside unique card function:");
+    console.log(cardList, boardCard);
+
+    const distinctiveCard = cardList.filter(
+      (card) => !boardCards.map((bcard) => bcard.name).includes(card.name)
+    );
+    console.log("unique card", distinctiveCard);
+
+    return distinctiveCard;
+  };
+
   // shuffle card using fisher yates shuffle algorithm
-  const shuffleCard = (cardList) => {
+  const shuffleCard = (cardList = []) => {
     const copyItems = [...cardList];
+    // O(n)
     for (let i = copyItems.length - 1; i >= 0; i--) {
       const randomNum = Math.floor(Math.random() * copyItems.length);
       if (copyItems[randomNum] !== copyItems[i]) {
@@ -34,17 +50,18 @@ const GameScreen = ({ pokemonsData, initalPokemonsData, totalRound }) => {
     );
     const allSelectedCard = [...selectedCard, selectedCardData];
     const notSelectedCard = unSelectCard(pokemonsData, allSelectedCard);
-    const newDisplayCard = [
+    const firstTwoCards = [
       getRandomItem(notSelectedCard),
       getRandomItem(allSelectedCard),
-      getRandomItem(pokemonsData),
     ];
-    const newDisplayCards = shuffleCard(newDisplayCard);
-
-    console.log("Shuffle card", newDisplayCard, "card", newDisplayCards);
+    const thirdCard = getRandomItem(
+      uniqueCard(notSelectedCard, [...firstTwoCards])
+    );
+    const allThreeCard = firstTwoCards.concat(thirdCard);
+    const shuffleAllThreeCard = shuffleCard(allThreeCard);
 
     setSelectedCard([...allSelectedCard]);
-    setDisplayCard([...newDisplayCards]);
+    setDisplayCard([...shuffleAllThreeCard]);
   };
   return (
     <div style={{ display: "flex", flexWrap: "wrap", gap: "1rem" }}>
