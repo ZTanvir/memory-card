@@ -3,9 +3,16 @@ import PokemonCard from "./PokemonCard";
 import GameResultBanner from "./GameResultBanner";
 import { getRandomItem } from "../utils/helperFunctions";
 
-const GameScreen = ({ pokemonsData, initalPokemonsData, totalRound }) => {
+const GameScreen = ({
+  pokemonsData,
+  initalPokemonsData,
+  totalRound,
+  level,
+  handleRestartBtn,
+}) => {
   const [displayCard, setDisplayCard] = useState(initalPokemonsData);
   const [selectedCard, setSelectedCard] = useState([]);
+  const [currentRound, setCurrentRound] = useState(0);
 
   const unSelectCard = (allCards = [], selectCard) => {
     const cardsList = allCards.filter(
@@ -18,13 +25,9 @@ const GameScreen = ({ pokemonsData, initalPokemonsData, totalRound }) => {
   const uniqueCard = (cardList = [], boardCard = []) => {
     let boardCards = [...boardCard];
 
-    console.log("inside unique card function:");
-    console.log(cardList, boardCard);
-
     const distinctiveCard = cardList.filter(
       (card) => !boardCards.map((bcard) => bcard.name).includes(card.name)
     );
-    console.log("unique card", distinctiveCard);
 
     return distinctiveCard;
   };
@@ -63,10 +66,11 @@ const GameScreen = ({ pokemonsData, initalPokemonsData, totalRound }) => {
 
     setSelectedCard([...allSelectedCard]);
     setDisplayCard([...shuffleAllThreeCard]);
+    setCurrentRound(currentRound + 1);
   };
   return (
     <div style={{ display: "flex", flexWrap: "wrap", gap: "1rem" }}>
-      {/* {pokemonsData.length > 0
+      {pokemonsData.length > 0
         ? displayCard.map((card) => (
             <PokemonCard
               key={card.id}
@@ -75,10 +79,12 @@ const GameScreen = ({ pokemonsData, initalPokemonsData, totalRound }) => {
               handleClickCard={handleCard}
             />
           ))
-        : null} */}
-      <div>{totalRound}</div>
+        : null}
       <div>
-        <GameResultBanner result={false} />
+        <span>{currentRound}</span>/<span>{totalRound}</span>
+      </div>
+      <div>
+        {/* <GameResultBanner result={false} handleRestartBtn={handleRestartBtn} /> */}
       </div>
     </div>
   );
