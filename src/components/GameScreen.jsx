@@ -1,5 +1,6 @@
 import { useState } from "react";
 import PokemonCard from "./PokemonCard";
+import GameResultBanner from "./GameResultBanner";
 import { getRandomItem } from "../utils/helperFunctions";
 
 const GameScreen = ({ pokemonsData, initalPokemonsData, totalRound }) => {
@@ -65,7 +66,7 @@ const GameScreen = ({ pokemonsData, initalPokemonsData, totalRound }) => {
   };
   return (
     <div style={{ display: "flex", flexWrap: "wrap", gap: "1rem" }}>
-      {pokemonsData.length > 0
+      {/* {pokemonsData.length > 0
         ? displayCard.map((card) => (
             <PokemonCard
               key={card.id}
@@ -74,8 +75,11 @@ const GameScreen = ({ pokemonsData, initalPokemonsData, totalRound }) => {
               handleClickCard={handleCard}
             />
           ))
-        : null}
+        : null} */}
       <div>{totalRound}</div>
+      <div>
+        <GameResultBanner result={false} />
+      </div>
     </div>
   );
 };

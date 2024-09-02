@@ -1,0 +1,55 @@
+.resultBanner {
+  width: 600px;
+  object-fit: contain;
+  position: relative;
+}
+.resultBanner img {
+  border-radius: 2rem;
+}
+.restartBtn {
+  position: absolute;
+  bottom: 20px;
+  background-color: white;
+  left: 250px;
+  padding: 0.5rem 2rem;
+  border-radius: 1rem;
+  font-size: 1.25rem;
+  border: none;
+  z-index: 3;
+}
+.restartBtn:hover {
+  cursor: pointer;
+  background-color: aliceblue;
+}
+.displayResult {
+  position: absolute;
+  top: 20px;
+  color: white;
+  left: 231px;
+  padding: 1rem 2.5rem;
+  border-radius: 1rem;
+  font-size: 1.25rem;
+  font-weight: 800;
+  border: none;
+  z-index: 3;
+}
+
+.overLay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 2rem;
+  /* same as top:0,right:0,bottom:0,left:0 */
+  inset: 0;
+  opacity: 0.2;
+  z-index: 2;
+}
+.backgroundGradient {
+  position: absolute;
+  border-radius: 2rem;
+  inset: 0;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  filter: blur(7px);
+}
