@@ -1,7 +1,7 @@
 import { useState } from "react";
 import PokemonCard from "./PokemonCard";
 import GameResultBanner from "./GameResultBanner";
-import { getRandomItem } from "../utils/helperFunctions";
+import { getRandomItem, shuffleCard } from "../utils/helperFunctions";
 
 const GameScreen = ({
   pokemonsData,
@@ -31,21 +31,6 @@ const GameScreen = ({
     );
 
     return distinctiveCard;
-  };
-
-  // shuffle card using fisher yates shuffle algorithm
-  const shuffleCard = (cardList = []) => {
-    const copyItems = [...cardList];
-    // O(n)
-    for (let i = copyItems.length - 1; i >= 0; i--) {
-      const randomNum = Math.floor(Math.random() * copyItems.length);
-      if (copyItems[randomNum] !== copyItems[i]) {
-        let temp = copyItems[randomNum];
-        copyItems[randomNum] = copyItems[i];
-        copyItems[i] = temp;
-      }
-    }
-    return copyItems;
   };
 
   const handleCard = (e) => {

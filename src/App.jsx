@@ -4,7 +4,7 @@ import GameInstruction from "./components/GameInstruction";
 import HomeScreen from "./components/HomeScreen";
 import PokemonLogo from "./components/PokemonLogo";
 import * as pokemonService from "./services/pokemonapi";
-import { generateRandomNum } from "../src/utils/helperFunctions";
+import { generateRandomNum, shuffleCard } from "../src/utils/helperFunctions";
 import LoadingSceen from "./components/LoadingScreen";
 import GameScreen from "./components/GameScreen";
 import mayPokemon from "./assets/video/maypokemon.mp4";
@@ -20,6 +20,18 @@ function App() {
   const handhandleDifficultyBtn = (e) => {
     interfaceMusic.current.playAudio();
     setScreen(e.target.dataset.value.toLowerCase());
+  };
+  // shuffle pokemon cards so
+  // user get new cards every time when they restart
+  const initialCardData = (allCards = []) => {
+    const shuffleCardData = shuffleCard(allCards);
+    if (screen === "easy") {
+      return shuffleCardData.slice(0, 3);
+    } else if (screen === "medium") {
+      return shuffleCardData.slice(0, 4);
+    } else if (screen === "hard") {
+      return shuffleCardData.slice(0, 5);
+    }
   };
 
   useEffect(() => {
@@ -65,7 +77,7 @@ function App() {
         {screen === "easy" && (
           <GameScreen
             pokemonsData={pokemonData}
-            initalPokemonsData={pokemonData.slice(0, 3)}
+            initalPokemonsData={initialCardData(pokemonData)}
             totalRound={5}
             handleRestartBtn={() => setScreen("home")}
           />
