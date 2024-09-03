@@ -67,6 +67,7 @@ function App() {
             pokemonsData={pokemonData}
             initalPokemonsData={pokemonData.slice(0, 3)}
             totalRound={5}
+            handleRestartBtn={() => setScreen("home")}
           />
         )}
       </main>

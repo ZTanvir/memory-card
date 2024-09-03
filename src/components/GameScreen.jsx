@@ -13,6 +13,7 @@ const GameScreen = ({
   const [displayCard, setDisplayCard] = useState(initalPokemonsData);
   const [selectedCard, setSelectedCard] = useState([]);
   const [currentRound, setCurrentRound] = useState(0);
+  const [gameResult, setGameResult] = useState("playing");
 
   const unSelectCard = (allCards = [], selectCard) => {
     const cardsList = allCards.filter(
@@ -69,9 +70,10 @@ const GameScreen = ({
     setCurrentRound(currentRound + 1);
   };
   return (
-    <div style={{ display: "flex", flexWrap: "wrap", gap: "1rem" }}>
-      {pokemonsData.length > 0
-        ? displayCard.map((card) => (
+    <div className="gameScreenContainer">
+      <div className="cardBoard">
+        {pokemonsData.length > 0 && gameResult == "playing" ? (
+          displayCard.map((card) => (
             <PokemonCard
               key={card.id}
               pokemonImg={card.img}
@@ -79,13 +81,20 @@ const GameScreen = ({
               handleClickCard={handleCard}
             />
           ))
-        : null}
-      <div>
-        <span>{currentRound}</span>/<span>{totalRound}</span>
+        ) : (
+          <div className="resultMessage">
+            <GameResultBanner
+              result={gameResult === "won"}
+              handleRestartBtn={handleRestartBtn}
+            />
+          </div>
+        )}
       </div>
-      <div>
-        {/* <GameResultBanner result={false} handleRestartBtn={handleRestartBtn} /> */}
-      </div>
+      {gameResult === "playing" && (
+        <div>
+          <span>{currentRound}</span>/<span>{totalRound}</span>
+        </div>
+      )}
     </div>
   );
 };
