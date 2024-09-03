@@ -8,5 +8,19 @@ const getRandomItem = (itemList) => {
   const randomNum = Math.floor(Math.random() * size);
   return itemList[randomNum];
 };
+// shuffle card using fisher yates shuffle algorithm
+const shuffleCard = (cardList = []) => {
+  const copyItems = [...cardList];
+  // O(n)
+  for (let i = copyItems.length - 1; i >= 0; i--) {
+    const randomNum = Math.floor(Math.random() * copyItems.length);
+    if (copyItems[randomNum] !== copyItems[i]) {
+      let temp = copyItems[randomNum];
+      copyItems[randomNum] = copyItems[i];
+      copyItems[i] = temp;
+    }
+  }
+  return copyItems;
+};
 
-export { generateRandomNum, getRandomItem };
+export { generateRandomNum, getRandomItem, shuffleCard };
