@@ -2,6 +2,7 @@ import { useState } from "react";
 import PokemonCard from "./PokemonCard";
 import GameResultBanner from "./GameResultBanner";
 import { getRandomItem, shuffleCard } from "../utils/helperFunctions";
+import styles from "../styles/gameScreen.module.css";
 
 const GameScreen = ({
   pokemonsData,
@@ -12,7 +13,7 @@ const GameScreen = ({
 }) => {
   const [displayCard, setDisplayCard] = useState(initalPokemonsData);
   const [selectedCard, setSelectedCard] = useState([]);
-  const [currentRound, setCurrentRound] = useState(0);
+  const [currentRound, setCurrentRound] = useState(1);
   const [gameResult, setGameResult] = useState("playing");
 
   const unSelectCard = (allCards = [], selectCard) => {
@@ -33,6 +34,22 @@ const GameScreen = ({
     return distinctiveCard;
   };
 
+  const checkGameResult = (pickCards = [], currentPickCard) => {
+    console.log(pickCards, currentPickCard);
+
+    const checkDuplicateCard = pickCards
+      .map((card) => card.name)
+      .includes(currentPickCard);
+
+    if (checkDuplicateCard) {
+      return "lose";
+    } else if (!checkDuplicateCard && currentRound >= totalRound) {
+      return "won";
+    } else if (!checkDuplicateCard && currentRound <= totalRound) {
+      return "playing";
+    }
+  };
+
   const handleCard = (e) => {
     const selectedCardName = e.currentTarget.dataset.cardname;
     const selectedCardData = pokemonsData.find(
@@ -50,13 +67,20 @@ const GameScreen = ({
     const allThreeCard = firstTwoCards.concat(thirdCard);
     const shuffleAllThreeCard = shuffleCard(allThreeCard);
 
+    // check game result
+    const roundResult = checkGameResult(selectedCard, selectedCardName);
+    if (roundResult === "won") {
+      setGameResult("won");
+    } else if (roundResult === "lose") {
+      setGameResult("lose");
+    }
     setSelectedCard([...allSelectedCard]);
     setDisplayCard([...shuffleAllThreeCard]);
     setCurrentRound(currentRound + 1);
   };
   return (
-    <div className="gameScreenContainer">
-      <div className="cardBoard">
+    <div className={styles.gameScreenContainer}>
+      <div className={styles.cardBoard}>
         {pokemonsData.length > 0 && gameResult == "playing" ? (
           displayCard.map((card) => (
             <PokemonCard

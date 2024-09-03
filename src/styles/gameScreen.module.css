@@ -1,0 +1,10 @@
+.gameScreenContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.cardBoard {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+}
