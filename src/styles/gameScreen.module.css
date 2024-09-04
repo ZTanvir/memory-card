@@ -1,4 +1,12 @@
-.gameScreenContainer {
+.gameLogo {
+  width: 300px;
+  transition: transform 1s ease-out;
+}
+.gameLogo:hover {
+  transform: scale(1.1);
+  cursor: pointer;
+}
+.cardBoardContainer {
   display: flex;
   flex-direction: column;
   align-items: center;

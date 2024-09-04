@@ -1,5 +1,6 @@
 import { useState } from "react";
 import PokemonCard from "./PokemonCard";
+import PokemonLogo from "./PokemonLogo";
 import GameResultBanner from "./GameResultBanner";
 import { getRandomItem, shuffleCard } from "../utils/helperFunctions";
 import styles from "../styles/gameScreen.module.css";
@@ -87,31 +88,38 @@ const GameScreen = ({
 
   return (
     <div className={styles.gameScreenContainer}>
-      <header></header>
-      <div className={styles.cardBoard}>
-        {pokemonsData.length > 0 && gameResult == "playing" ? (
-          displayCard.map((card) => (
-            <PokemonCard
-              key={card.id}
-              pokemonImg={card.img}
-              cardName={card.name}
-              handleClickCard={handleCard}
-            />
-          ))
-        ) : (
-          <div className="resultMessage">
-            <GameResultBanner
-              result={gameResult === "won"}
-              handleRestartBtn={handleRestartBtn}
-            />
+      <div className={styles.gameScreenHeader}>
+        <div className={styles.gameLogo}>
+          <PokemonLogo />
+        </div>
+        <div className={styles.scoreBoard}></div>
+      </div>
+      <div className={styles.cardBoardContainer}>
+        <div className={styles.cardBoard}>
+          {pokemonsData.length > 0 && gameResult == "playing" ? (
+            displayCard.map((card) => (
+              <PokemonCard
+                key={card.id}
+                pokemonImg={card.img}
+                cardName={card.name}
+                handleClickCard={handleCard}
+              />
+            ))
+          ) : (
+            <div className="resultMessage">
+              <GameResultBanner
+                result={gameResult === "won"}
+                handleRestartBtn={handleRestartBtn}
+              />
+            </div>
+          )}
+        </div>
+        {gameResult === "playing" && (
+          <div>
+            <span>{currentRound}</span>/<span>{totalRound}</span>
           </div>
         )}
       </div>
-      {gameResult === "playing" && (
-        <div>
-          <span>{currentRound}</span>/<span>{totalRound}</span>
-        </div>
-      )}
     </div>
   );
 };
