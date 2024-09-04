@@ -79,7 +79,6 @@ function App() {
             pokemonsData={pokemonData}
             initalPokemonsData={initialCardData(pokemonData)}
             totalRound={5}
-            handleRestartBtn={() => setScreen("home")}
           />
         )}
       </main>

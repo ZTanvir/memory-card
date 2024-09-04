@@ -9,7 +9,6 @@ const GameScreen = ({
   initalPokemonsData,
   totalRound,
   level,
-  handleRestartBtn,
 }) => {
   const [displayCard, setDisplayCard] = useState(initalPokemonsData);
   const [selectedCard, setSelectedCard] = useState([]);
@@ -35,8 +34,6 @@ const GameScreen = ({
   };
 
   const checkGameResult = (pickCards = [], currentPickCard) => {
-    console.log(pickCards, currentPickCard);
-
     const checkDuplicateCard = pickCards
       .map((card) => card.name)
       .includes(currentPickCard);
@@ -78,6 +75,16 @@ const GameScreen = ({
     setDisplayCard([...shuffleAllThreeCard]);
     setCurrentRound(currentRound + 1);
   };
+
+  const handleRestartBtn = () => {
+    const totalInitialCard = displayCard.length;
+    // initial card on board when restart
+    setDisplayCard(shuffleCard(pokemonsData).slice(0, totalInitialCard));
+    setSelectedCard([]);
+    setCurrentRound(1);
+    setGameResult("playing");
+  };
+
   return (
     <div className={styles.gameScreenContainer}>
       <div className={styles.cardBoard}>
