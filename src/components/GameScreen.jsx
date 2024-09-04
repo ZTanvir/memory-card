@@ -2,6 +2,7 @@ import { useState } from "react";
 import PokemonCard from "./PokemonCard";
 import PokemonLogo from "./PokemonLogo";
 import GameResultBanner from "./GameResultBanner";
+import ScoreBoard from "./ScoreBoard";
 import { getRandomItem, shuffleCard } from "../utils/helperFunctions";
 import styles from "../styles/gameScreen.module.css";
 
@@ -10,6 +11,7 @@ const GameScreen = ({
   initalPokemonsData,
   totalRound,
   level,
+  handleClickLogo,
 }) => {
   const [displayCard, setDisplayCard] = useState(initalPokemonsData);
   const [selectedCard, setSelectedCard] = useState([]);
@@ -89,10 +91,10 @@ const GameScreen = ({
   return (
     <div className={styles.gameScreenContainer}>
       <div className={styles.gameScreenHeader}>
-        <div className={styles.gameLogo}>
+        <div onClick={handleClickLogo} className={styles.gameLogo}>
           <PokemonLogo />
         </div>
-        <div className={styles.scoreBoard}></div>
+        <ScoreBoard />
       </div>
       <div className={styles.cardBoardContainer}>
         <div className={styles.cardBoard}>

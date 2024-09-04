@@ -21,6 +21,10 @@ function App() {
     interfaceMusic.current.playAudio();
     setScreen(e.target.dataset.value.toLowerCase());
   };
+
+  const handleClickLogo = () => {
+    setScreen("home");
+  };
   // shuffle pokemon cards so
   // user get new cards every time when they restart
   const initialCardData = (allCards = []) => {
@@ -81,6 +85,7 @@ function App() {
             pokemonsData={pokemonData}
             initalPokemonsData={initialCardData(pokemonData)}
             totalRound={5}
+            handleClickLogo={handleClickLogo}
           />
         )}
       </main>
