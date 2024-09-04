@@ -87,6 +87,7 @@ const GameScreen = ({
 
   return (
     <div className={styles.gameScreenContainer}>
+      <header></header>
       <div className={styles.cardBoard}>
         {pokemonsData.length > 0 && gameResult == "playing" ? (
           displayCard.map((card) => (

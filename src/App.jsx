@@ -64,11 +64,13 @@ function App() {
 
   return (
     <>
-      <header>
-        <div className="logo">
-          <PokemonLogo />
-        </div>
-      </header>
+      {screen === "home" && (
+        <header>
+          <div className="logo">
+            <PokemonLogo />
+          </div>
+        </header>
+      )}
       <main className="homeScreen">
         {screen === "loading" && <LoadingSceen />}
         {screen === "home" && pokemonData && (
