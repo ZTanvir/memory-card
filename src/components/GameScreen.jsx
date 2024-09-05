@@ -17,6 +17,7 @@ const GameScreen = ({
   const [selectedCard, setSelectedCard] = useState([]);
   const [currentRound, setCurrentRound] = useState(1);
   const [gameResult, setGameResult] = useState("playing");
+  const [score, setScore] = useState(0);
 
   const unSelectCard = (allCards = [], selectCard) => {
     const cardsList = allCards.filter(
@@ -70,13 +71,18 @@ const GameScreen = ({
     // check game result
     const roundResult = checkGameResult(selectedCard, selectedCardName);
     if (roundResult === "won") {
+      setScore(score + 1);
       setGameResult("won");
+      return;
     } else if (roundResult === "lose") {
       setGameResult("lose");
+      return;
+    } else if (roundResult === "playing") {
+      setScore(score + 1);
+      setSelectedCard([...allSelectedCard]);
+      setDisplayCard([...shuffleAllThreeCard]);
+      setCurrentRound(currentRound + 1);
     }
-    setSelectedCard([...allSelectedCard]);
-    setDisplayCard([...shuffleAllThreeCard]);
-    setCurrentRound(currentRound + 1);
   };
 
   const handleRestartBtn = () => {
@@ -85,6 +91,7 @@ const GameScreen = ({
     setDisplayCard(shuffleCard(pokemonsData).slice(0, totalInitialCard));
     setSelectedCard([]);
     setCurrentRound(1);
+    setScore(0);
     setGameResult("playing");
   };
 
@@ -94,7 +101,7 @@ const GameScreen = ({
         <div onClick={handleClickLogo} className={styles.gameLogo}>
           <PokemonLogo />
         </div>
-        <ScoreBoard />
+        <ScoreBoard score={score} />
       </div>
       <div className={styles.cardBoardContainer}>
         <div className={styles.cardBoard}>
