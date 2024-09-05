@@ -101,7 +101,7 @@ const GameScreen = ({
         <div onClick={handleClickLogo} className={styles.gameLogo}>
           <PokemonLogo />
         </div>
-        <ScoreBoard score={score} />
+        <ScoreBoard score={score} lvl={level} />
       </div>
       <div className={styles.cardBoardContainer}>
         <div className={styles.cardBoard}>

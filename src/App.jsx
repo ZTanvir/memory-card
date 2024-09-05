@@ -86,6 +86,7 @@ function App() {
             initalPokemonsData={initialCardData(pokemonData)}
             totalRound={5}
             handleClickLogo={handleClickLogo}
+            level={"easy"}
           />
         )}
       </main>
