@@ -50,6 +50,53 @@ const GameScreen = ({
       return "playing";
     }
   };
+  const getEachBoardCards = (
+    allSelectedCard = [],
+    notSelectedCard = [],
+    lvl
+  ) => {
+    if (lvl === "easy") {
+      const firstTwoCards = [
+        getRandomItem(notSelectedCard),
+        getRandomItem(allSelectedCard),
+      ];
+      const thirdCard = getRandomItem(
+        uniqueCard(notSelectedCard, [...firstTwoCards])
+      );
+      const allThreeCards = firstTwoCards.concat(thirdCard);
+      return allThreeCards;
+    } else if (lvl === "medium") {
+      if (currentRound === 1) {
+        const firstTwoCards = [
+          getRandomItem(notSelectedCard),
+          getRandomItem(allSelectedCard),
+        ];
+        const thirdCard = getRandomItem(
+          uniqueCard(notSelectedCard, [...firstTwoCards])
+        );
+        const allThreeCards = firstTwoCards.concat(thirdCard);
+        const forthCard = getRandomItem(
+          uniqueCard(notSelectedCard, [...allThreeCards])
+        );
+        const allFourCards = allThreeCards.concat(forthCard);
+        return allFourCards;
+      } else if (currentRound > 1) {
+        const firstTwoCards = [
+          getRandomItem(notSelectedCard),
+          getRandomItem(allSelectedCard),
+        ];
+        const thirdCard = getRandomItem(
+          uniqueCard(allSelectedCard, [...firstTwoCards])
+        );
+        const allThreeCards = firstTwoCards.concat(thirdCard);
+        const forthCard = getRandomItem(
+          uniqueCard(notSelectedCard, [...allThreeCards])
+        );
+        const allFourCards = allThreeCards.concat(forthCard);
+        return allFourCards;
+      }
+    }
+  };
 
   const handleCard = (e) => {
     const selectedCardName = e.currentTarget.dataset.cardname;
@@ -58,15 +105,13 @@ const GameScreen = ({
     );
     const allSelectedCard = [...selectedCard, selectedCardData];
     const notSelectedCard = unSelectCard(pokemonsData, allSelectedCard);
-    const firstTwoCards = [
-      getRandomItem(notSelectedCard),
-      getRandomItem(allSelectedCard),
-    ];
-    const thirdCard = getRandomItem(
-      uniqueCard(notSelectedCard, [...firstTwoCards])
+    const boardCards = getEachBoardCards(
+      allSelectedCard,
+      notSelectedCard,
+      level
     );
-    const allThreeCard = firstTwoCards.concat(thirdCard);
-    const shuffleAllThreeCard = shuffleCard(allThreeCard);
+
+    const shuffleCards = shuffleCard(boardCards);
 
     // check game result
     const roundResult = checkGameResult(selectedCard, selectedCardName);
@@ -78,9 +123,11 @@ const GameScreen = ({
       setGameResult("lose");
       return;
     } else if (roundResult === "playing") {
+      console.log("game round", currentRound);
+
       setScore(score + 1);
       setSelectedCard([...allSelectedCard]);
-      setDisplayCard([...shuffleAllThreeCard]);
+      setDisplayCard([...shuffleCards]);
       setCurrentRound(currentRound + 1);
     }
   };

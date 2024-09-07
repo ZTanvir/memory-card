@@ -89,6 +89,15 @@ function App() {
             level={"easy"}
           />
         )}
+        {screen === "medium" && (
+          <GameScreen
+            pokemonsData={pokemonData}
+            initalPokemonsData={initialCardData(pokemonData)}
+            totalRound={7}
+            handleClickLogo={handleClickLogo}
+            level={"medium"}
+          />
+        )}
       </main>
       <div className="overlay"></div>
       {/* <video
