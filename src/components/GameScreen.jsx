@@ -12,6 +12,7 @@ const GameScreen = ({
   totalRound,
   level,
   handleClickLogo,
+  cardClickMusic,
 }) => {
   const [displayCard, setDisplayCard] = useState(initalPokemonsData);
   const [selectedCard, setSelectedCard] = useState([]);
@@ -158,6 +159,7 @@ const GameScreen = ({
   };
 
   const handleCard = (e) => {
+    cardClickMusic.current.playAudio();
     const selectedCardName = e.currentTarget.dataset.cardname;
     // check game result
     const roundResult = checkGameResult(selectedCard, selectedCardName);

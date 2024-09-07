@@ -87,6 +87,7 @@ function App() {
             totalRound={5}
             handleClickLogo={handleClickLogo}
             level={"easy"}
+            cardClickMusic={interfaceMusic}
           />
         )}
         {screen === "medium" && (
@@ -96,6 +97,7 @@ function App() {
             totalRound={7}
             handleClickLogo={handleClickLogo}
             level={"medium"}
+            cardClickMusic={interfaceMusic}
           />
         )}
         {screen === "hard" && (
@@ -105,6 +107,7 @@ function App() {
             totalRound={9}
             handleClickLogo={handleClickLogo}
             level={"hard"}
+            cardClickMusic={interfaceMusic}
           />
         )}
       </main>
