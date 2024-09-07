@@ -17,7 +17,7 @@ function App() {
   const [pokemonData, setPokemonData] = useState([]);
   const interfaceMusic = useRef(null); //menu music
 
-  const handhandleDifficultyBtn = (e) => {
+  const handleDifficultyBtn = (e) => {
     interfaceMusic.current.playAudio();
     setScreen(e.target.dataset.value.toLowerCase());
   };
@@ -26,7 +26,7 @@ function App() {
     setScreen("home");
   };
   // shuffle pokemon cards so
-  // user get new cards every time when they restart
+  // user get new initial cards every time when they restart
   const initialCardData = (allCards = []) => {
     const shuffleCardData = shuffleCard(allCards);
     if (screen === "easy") {
@@ -78,7 +78,7 @@ function App() {
       <main className="homeScreen">
         {screen === "loading" && <LoadingSceen />}
         {screen === "home" && pokemonData && (
-          <HomeScreen handhandleDifficultyBtn={handhandleDifficultyBtn} />
+          <HomeScreen handhandleDifficultyBtn={handleDifficultyBtn} />
         )}
         {screen === "easy" && (
           <GameScreen
@@ -112,13 +112,13 @@ function App() {
         )}
       </main>
       <div className="overlay"></div>
-      {/* <video
+      <video
         className="bgVideo"
         src={mayPokemon}
         autoPlay={true}
         muted={true}
         loop={true}
-      /> */}
+      />
       <footer>
         <div className="gameBgMusic">
           <AudioPlayManual
@@ -126,6 +126,7 @@ function App() {
             playIcon={"music_note"}
             pauseIcon={"music_off"}
             playStatus={false}
+            audioLoop={true}
           />
           <AudioPlayManual
             ref={interfaceMusic}
@@ -133,6 +134,7 @@ function App() {
             playIcon={"volume_up"}
             pauseIcon={"volume_off"}
             playStatus={true}
+            audioLoop={false}
           />
         </div>
         <div className="gameInstruction">

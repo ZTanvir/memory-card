@@ -2,7 +2,7 @@ import { forwardRef, useImperativeHandle, useRef, useState } from "react";
 import styles from "../styles/audioStyles.module.css";
 
 const AudioPlayManual = forwardRef(
-  ({ src, playIcon, pauseIcon, playStatus }, ref) => {
+  ({ src, playIcon, pauseIcon, playStatus, audioLoop }, ref) => {
     const [isPlaying, setIsPlaying] = useState(playStatus);
     const audioEl = useRef(null);
 
@@ -30,7 +30,7 @@ const AudioPlayManual = forwardRef(
 
     return (
       <div className={styles.audioPlayer}>
-        <audio ref={audioEl} id="audio">
+        <audio loop={audioLoop} ref={audioEl} id="audio">
           <source src={src} type="audio/mpeg" />
           Your browser does not support the audio element.
         </audio>
