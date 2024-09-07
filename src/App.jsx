@@ -47,7 +47,7 @@ function App() {
     };
 
     let listOfRequest = [];
-    // get 1st 10 pokemon data
+    // get random 10 pokemons data
     for (let i = 0; i < 10; i++) {
       listOfRequest.push(getPokemon(generateRandomNum()));
     }
@@ -60,7 +60,7 @@ function App() {
           setScreen("home");
         }, 5000);
       } catch (err) {
-        console.log("Error while getting pokemons data", err);
+        console.error("Error while getting pokemons data", err);
       }
     };
     getPokemonsData();
@@ -96,6 +96,15 @@ function App() {
             totalRound={7}
             handleClickLogo={handleClickLogo}
             level={"medium"}
+          />
+        )}
+        {screen === "hard" && (
+          <GameScreen
+            pokemonsData={pokemonData}
+            initalPokemonsData={initialCardData(pokemonData)}
+            totalRound={9}
+            handleClickLogo={handleClickLogo}
+            level={"hard"}
           />
         )}
       </main>
