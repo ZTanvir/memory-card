@@ -4,20 +4,23 @@
   height: 320px;
   border-radius: 1rem;
   overflow: hidden;
-  opacity: 0.9;
   cursor: pointer;
 }
 .cardInner {
   transform-style: preserve-3d;
   transition: all 0.5s ease;
+  transform: rotateY(180deg);
 }
 .cardFront {
-  background-color: #66c49d;
   backface-visibility: hidden;
   display: flex;
   flex-direction: column;
   padding: 1rem;
 }
+.cardFront:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
 .cardFront img {
   object-fit: contain;
   padding: 1rem;
@@ -28,14 +31,24 @@
   text-transform: capitalize;
   color: white;
 }
+.glassBackground {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  filter: blur(4px);
+  -webkit-filter: blur(4px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
 .cardBack {
   backface-visibility: hidden;
   transform: rotateY(180deg);
+  background-color: aqua;
 }
-.cardInner:hover {
-  /* transform: rotateY(180deg); */
-  opacity: 0.7;
-}
+
 :is(.cardInner, .cardFront, .cardBack) {
   position: absolute;
   width: 100%;
