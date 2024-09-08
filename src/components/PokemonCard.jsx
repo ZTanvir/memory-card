@@ -1,6 +1,6 @@
 import styles from "../styles/pokemonCard.module.css";
 import pokemonCardBack from "../assets/images/pokemon_Trading_Card_Game_cardback.jpg";
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
 
 const PokemonCard = ({ pokemonImg, cardName, handleClickCard }) => {
   const cardInnerElements = useRef(null);

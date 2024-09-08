@@ -230,8 +230,8 @@ const GameScreen = ({
           )}
         </div>
         {gameResult === "playing" && (
-          <div>
-            <span>{currentRound}</span>/<span>{totalRound}</span>
+          <div className={styles.gameRoundContainer}>
+            <span>{currentRound}</span> / <span>{totalRound}</span>
           </div>
         )}
       </div>
