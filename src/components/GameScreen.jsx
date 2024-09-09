@@ -210,7 +210,7 @@ const GameScreen = ({
         <ScoreBoard score={score} lvl={level} />
       </div>
       <div className={styles.cardBoardContainer}>
-        <div className={styles.cardBoard}>
+        <div key={crypto.randomUUID()} className={styles.cardBoard}>
           {pokemonsData.length > 0 && gameResult == "playing" ? (
             displayCard.map((card) => (
               <PokemonCard
@@ -218,7 +218,6 @@ const GameScreen = ({
                 pokemonImg={card.img}
                 cardName={card.name}
                 handleClickCard={handleCard}
-                isShowCardBack={true}
               />
             ))
           ) : (

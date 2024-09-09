@@ -2,18 +2,14 @@ import styles from "../styles/pokemonCard.module.css";
 import pokemonCardBack from "../assets/images/pokemon_Trading_Card_Game_cardback.jpg";
 import { useRef, useEffect, useState } from "react";
 
-const PokemonCard = ({
-  pokemonImg,
-  cardName,
-  handleClickCard,
-  isShowCardBack,
-}) => {
+const PokemonCard = ({ pokemonImg, cardName, handleClickCard }) => {
   const cardInnerElements = useRef(null);
 
   useEffect(() => {
     const id = setTimeout(() => {
       cardInnerElements.current.style.transform = "rotateY(0deg)";
     }, 500);
+
     return () => clearTimeout(id);
   }, []);
 
@@ -23,11 +19,7 @@ const PokemonCard = ({
       className={styles.pokemonCard}
       onClick={handleClickCard}
     >
-      <div
-        ref={cardInnerElements}
-        className={styles.cardInner}
-        style={isShowCardBack ? { transform: "rotateY(180deg)" } : null}
-      >
+      <div ref={cardInnerElements} className={styles.cardInner}>
         <div className={styles.cardFront}>
           <img src={pokemonImg} alt={`${cardName} pokemon image}`} />
           <h2>{cardName}</h2>
