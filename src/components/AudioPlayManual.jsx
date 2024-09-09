@@ -9,7 +9,7 @@ const AudioPlayManual = forwardRef(
     useImperativeHandle(ref, () => {
       return {
         playAudio() {
-          audioEl.current.volume = 0.5;
+          audioEl.current.volume = 0.2;
           if (isPlaying) {
             // play only when interface music is set to play
             audioEl.current.play();

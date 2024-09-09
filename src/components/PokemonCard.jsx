@@ -1,12 +1,16 @@
 import styles from "../styles/pokemonCard.module.css";
 import pokemonCardBack from "../assets/images/pokemon_Trading_Card_Game_cardback.jpg";
-import { useRef, useEffect, useState } from "react";
+import flipCardAudioFile from "../assets/audios/flipcardAudio.mp3";
+import { useRef, useEffect } from "react";
 
 const PokemonCard = ({ pokemonImg, cardName, handleClickCard }) => {
   const cardInnerElements = useRef(null);
+  const flipCardAudioEl = useRef(null);
 
   useEffect(() => {
     const id = setTimeout(() => {
+      flipCardAudioEl.current.volume = 0.2;
+      flipCardAudioEl.current.play();
       cardInnerElements.current.style.transform = "rotateY(0deg)";
     }, 500);
 
@@ -19,6 +23,7 @@ const PokemonCard = ({ pokemonImg, cardName, handleClickCard }) => {
       className={styles.pokemonCard}
       onClick={handleClickCard}
     >
+      <audio className={styles.flipCardAudio} src={flipCardAudioFile}></audio>
       <div ref={cardInnerElements} className={styles.cardInner}>
         <div className={styles.cardFront}>
           <img src={pokemonImg} alt={`${cardName} pokemon image}`} />

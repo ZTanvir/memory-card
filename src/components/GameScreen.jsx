@@ -1,8 +1,9 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import PokemonCard from "./PokemonCard";
 import PokemonLogo from "./PokemonLogo";
 import GameResultBanner from "./GameResultBanner";
 import ScoreBoard from "./ScoreBoard";
+import flipCardSound from "../assets/audios/flipcardAudio.mp3";
 import { getRandomItem, shuffleCard } from "../utils/helperFunctions";
 import styles from "../styles/gameScreen.module.css";
 
@@ -19,6 +20,7 @@ const GameScreen = ({
   const [currentRound, setCurrentRound] = useState(1);
   const [gameResult, setGameResult] = useState("playing");
   const [score, setScore] = useState(0);
+  const flipCardAudioEl = useRef(null);
 
   const unSelectCard = (allCards = [], selectCard) => {
     const cardsList = allCards.filter(
@@ -203,6 +205,7 @@ const GameScreen = ({
 
   return (
     <div className={styles.gameScreenContainer}>
+      <audio ref={flipCardAudioEl} src={flipCardSound}></audio>
       <div className={styles.gameScreenHeader}>
         <div onClick={handleClickLogo} className={styles.gameLogo}>
           <PokemonLogo />
@@ -218,6 +221,7 @@ const GameScreen = ({
                 pokemonImg={card.img}
                 cardName={card.name}
                 handleClickCard={handleCard}
+                flipCardAudioEl={flipCardAudioEl}
               />
             ))
           ) : (
