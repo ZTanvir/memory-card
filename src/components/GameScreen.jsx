@@ -218,6 +218,7 @@ const GameScreen = ({
                 pokemonImg={card.img}
                 cardName={card.name}
                 handleClickCard={handleCard}
+                isShowCardBack={true}
               />
             ))
           ) : (
