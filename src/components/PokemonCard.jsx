@@ -9,9 +9,9 @@ const PokemonCard = ({ pokemonImg, cardName, handleClickCard }) => {
 
   useEffect(() => {
     const id = setTimeout(() => {
+      cardInnerElements.current.style.transform = "rotateY(0deg)";
       flipCardAudioEl.current.volume = 0.2;
       flipCardAudioEl.current.play();
-      cardInnerElements.current.style.transform = "rotateY(0deg)";
     }, 500);
 
     return () => clearTimeout(id);
@@ -23,7 +23,11 @@ const PokemonCard = ({ pokemonImg, cardName, handleClickCard }) => {
       className={styles.pokemonCard}
       onClick={handleClickCard}
     >
-      <audio className={styles.flipCardAudio} src={flipCardAudioFile}></audio>
+      <audio
+        ref={flipCardAudioEl}
+        className={styles.flipCardAudio}
+        src={flipCardAudioFile}
+      ></audio>
       <div ref={cardInnerElements} className={styles.cardInner}>
         <div className={styles.cardFront}>
           <img src={pokemonImg} alt={`${cardName} pokemon image}`} />
