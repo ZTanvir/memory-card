@@ -111,3 +111,16 @@ footer {
   flex-direction: row;
   gap: 0.5rem;
 }
+.gameLogo {
+  width: 300px;
+  transition: transform 1s ease-out;
+}
+.gameLogo:hover {
+  transform: scale(1.1);
+  cursor: pointer;
+}
+.gameScreenHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}

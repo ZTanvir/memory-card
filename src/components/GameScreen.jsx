@@ -3,7 +3,6 @@ import PokemonCard from "./PokemonCard";
 import PokemonLogo from "./PokemonLogo";
 import GameResultBanner from "./GameResultBanner";
 import ScoreBoard from "./ScoreBoard";
-import flipCardSound from "../assets/audios/flipcardAudio.mp3";
 import { getRandomItem, shuffleCard } from "../utils/helperFunctions";
 import styles from "../styles/gameScreen.module.css";
 
@@ -12,14 +11,14 @@ const GameScreen = ({
   initalPokemonsData,
   totalRound,
   level,
-  handleClickLogo,
+  score,
+  setScore,
   cardClickMusic,
 }) => {
   const [displayCard, setDisplayCard] = useState(initalPokemonsData);
   const [selectedCard, setSelectedCard] = useState([]);
   const [currentRound, setCurrentRound] = useState(1);
   const [gameResult, setGameResult] = useState("playing");
-  const [score, setScore] = useState(0);
 
   const unSelectCard = (allCards = [], selectCard) => {
     const cardsList = allCards.filter(
@@ -204,12 +203,6 @@ const GameScreen = ({
 
   return (
     <div className={styles.gameScreenContainer}>
-      <div className={styles.gameScreenHeader}>
-        <div onClick={handleClickLogo} className={styles.gameLogo}>
-          <PokemonLogo />
-        </div>
-        <ScoreBoard score={score} lvl={level} />
-      </div>
       <div className={styles.cardBoardContainer}>
         <div key={crypto.randomUUID()} className={styles.cardBoard}>
           {pokemonsData.length > 0 && gameResult == "playing" ? (

@@ -7,6 +7,7 @@ import * as pokemonService from "./services/pokemonapi";
 import { generateRandomNum, shuffleCard } from "../src/utils/helperFunctions";
 import LoadingSceen from "./components/LoadingScreen";
 import GameScreen from "./components/GameScreen";
+import ScoreBoard from "./components/ScoreBoard";
 import mayPokemon from "./assets/video/maypokemon.mp4";
 import clickingInterface from "./assets/audios/clickingInterfaceSelect.mp3";
 import bgMusic from "./assets/audios/bgMusic.mp3";
@@ -15,6 +16,7 @@ import { useEffect, useRef, useState } from "react";
 function App() {
   const [screen, setScreen] = useState("loading");
   const [pokemonData, setPokemonData] = useState([]);
+  const [score, setScore] = useState(0);
   const interfaceMusic = useRef(null); //menu music
 
   const handleDifficultyBtn = (e) => {
@@ -68,13 +70,17 @@ function App() {
 
   return (
     <>
-      {(screen === "loading" || screen === "home") && (
-        <header>
-          <div className="logo">
+      {
+        <header className="gameScreenHeader">
+          <div onClick={handleClickLogo} className="gameLogo">
             <PokemonLogo />
           </div>
+          {/* display scoreboard only in game screen not loading and home screen */}
+          {!(screen === "loading" || screen === "home") && (
+            <ScoreBoard score={score} lvl={screen} />
+          )}
         </header>
-      )}
+      }
 
       <main className="homeScreen">
         {screen === "loading" && <LoadingSceen />}
@@ -89,6 +95,8 @@ function App() {
             handleClickLogo={handleClickLogo}
             level={"easy"}
             cardClickMusic={interfaceMusic}
+            score={score}
+            setScore={setScore}
           />
         )}
         {screen === "medium" && (
@@ -99,6 +107,8 @@ function App() {
             handleClickLogo={handleClickLogo}
             level={"medium"}
             cardClickMusic={interfaceMusic}
+            score={score}
+            setScore={setScore}
           />
         )}
         {screen === "hard" && (
@@ -109,6 +119,8 @@ function App() {
             handleClickLogo={handleClickLogo}
             level={"hard"}
             cardClickMusic={interfaceMusic}
+            score={score}
+            setScore={setScore}
           />
         )}
       </main>
