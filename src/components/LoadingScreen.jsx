@@ -17,7 +17,7 @@ const LoadingSceen = () => {
   }, []);
 
   return (
-    <div className={styles.loadinScreenContainer}>
+    <div className={styles.loadingScreenContainer}>
       <img className={styles.pokeball} src={pokeball} alt="" />
       <p className={styles.loadingText}>Loading {dot}</p>
     </div>

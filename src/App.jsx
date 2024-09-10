@@ -68,7 +68,7 @@ function App() {
 
   return (
     <>
-      {screen === "home" && (
+      {(screen === "loading" || screen === "home") && (
         <header>
           <div className="logo">
             <PokemonLogo />
@@ -78,11 +78,9 @@ function App() {
 
       <main className="homeScreen">
         {screen === "loading" && <LoadingSceen />}
-
         {screen === "home" && pokemonData && (
           <HomeScreen handhandleDifficultyBtn={handleDifficultyBtn} />
         )}
-
         {screen === "easy" && (
           <GameScreen
             pokemonsData={pokemonData}
@@ -93,7 +91,6 @@ function App() {
             cardClickMusic={interfaceMusic}
           />
         )}
-
         {screen === "medium" && (
           <GameScreen
             pokemonsData={pokemonData}
@@ -104,7 +101,6 @@ function App() {
             cardClickMusic={interfaceMusic}
           />
         )}
-
         {screen === "hard" && (
           <GameScreen
             pokemonsData={pokemonData}
