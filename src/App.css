@@ -70,10 +70,13 @@ h6 {
   width: 250px;
 }
 header {
-  height: 20vh;
+  /* height: 20vh; */
+  margin-bottom: auto;
 }
 .homeScreen {
-  height: 60vh;
+  /* height: 60vh; */
+  margin-top: auto;
+  margin-bottom: auto;
 }
 .overlay {
   position: fixed;

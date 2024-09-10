@@ -19,7 +19,7 @@ const LoadingSceen = () => {
   return (
     <div className={styles.loadinScreenContainer}>
       <img className={styles.pokeball} src={pokeball} alt="" />
-      <p>Loading {dot}</p>
+      <p className={styles.loadingText}>Loading {dot}</p>
     </div>
   );
 };

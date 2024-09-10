@@ -15,6 +15,8 @@
     transform: rotate(360deg) scale(1);
   }
 }
-.loadinScreenContainer p {
-  font-size: 1.5rem;
+
+.loadingText {
+  font-size: 3rem;
+  color: white;
 }

@@ -75,11 +75,14 @@ function App() {
           </div>
         </header>
       )}
+
       <main className="homeScreen">
         {screen === "loading" && <LoadingSceen />}
+
         {screen === "home" && pokemonData && (
           <HomeScreen handhandleDifficultyBtn={handleDifficultyBtn} />
         )}
+
         {screen === "easy" && (
           <GameScreen
             pokemonsData={pokemonData}
@@ -90,6 +93,7 @@ function App() {
             cardClickMusic={interfaceMusic}
           />
         )}
+
         {screen === "medium" && (
           <GameScreen
             pokemonsData={pokemonData}
@@ -100,6 +104,7 @@ function App() {
             cardClickMusic={interfaceMusic}
           />
         )}
+
         {screen === "hard" && (
           <GameScreen
             pokemonsData={pokemonData}
@@ -111,14 +116,16 @@ function App() {
           />
         )}
       </main>
+
       <div className="overlay"></div>
-      {/* <video
+      <video
         className="bgVideo"
         src={mayPokemon}
         autoPlay={true}
         muted={true}
         loop={true}
-      /> */}
+      />
+
       <footer>
         <div className="gameBgMusic">
           <AudioPlayManual
