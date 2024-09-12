@@ -30,7 +30,7 @@ const AudioPlayManual = forwardRef(
 
     return (
       <div className={styles.audioPlayer}>
-        <audio loop={audioLoop} ref={audioEl} id="audio">
+        <audio preload="auto" loop={audioLoop} ref={audioEl} id="audio">
           <source src={src} type="audio/mpeg" />
           Your browser does not support the audio element.
         </audio>
