@@ -22,6 +22,7 @@ function App() {
   const handleDifficultyBtn = (e) => {
     interfaceMusic.current.playAudio();
     setScreen(e.target.dataset.value.toLowerCase());
+    setScore(0);
   };
 
   const handleClickLogo = () => {
