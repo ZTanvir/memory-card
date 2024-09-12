@@ -18,3 +18,9 @@
   background-color: #2f6131;
   opacity: 0.8;
 }
+@media only screen and (min-width: 320px) and (max-width: 599px) {
+  /* smartphones, Android phones, landscape iPhone */
+  .difficultyBtn {
+    padding: 0.25rem 0.75rem;
+  }
+}
