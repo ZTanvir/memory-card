@@ -20,6 +20,10 @@
 body {
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none; /* Standard syntax */
+  font-family: "Roboto", sans-serif;
 }
 /*
   5. Improve media defaults
@@ -65,10 +69,8 @@ h6 {
   display: flex;
   flex-direction: column;
   padding: 1rem;
-  -webkit-user-select: none; /* Safari */
-  -ms-user-select: none; /* IE 10 and IE 11 */
-  user-select: none; /* Standard syntax */
 }
+
 .logo {
   width: 250px;
 }
