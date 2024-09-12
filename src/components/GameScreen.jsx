@@ -1,8 +1,6 @@
-import { useRef, useState } from "react";
+import { useState } from "react";
 import PokemonCard from "./PokemonCard";
-import PokemonLogo from "./PokemonLogo";
 import GameResultBanner from "./GameResultBanner";
-import ScoreBoard from "./ScoreBoard";
 import { getRandomItem, shuffleCard } from "../utils/helperFunctions";
 import styles from "../styles/gameScreen.module.css";
 
