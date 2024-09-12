@@ -16,3 +16,6 @@
   color: white;
   font-weight: bolder;
 }
+.flipCardAudio {
+  display: none;
+}

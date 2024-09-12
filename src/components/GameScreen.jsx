@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import PokemonCard from "./PokemonCard";
 import GameResultBanner from "./GameResultBanner";
+import flipCardAudioFile from "../assets/audios/flipcardAudio.mp3";
 import { getRandomItem, shuffleCard } from "../utils/helperFunctions";
 import styles from "../styles/gameScreen.module.css";
 
@@ -17,6 +18,7 @@ const GameScreen = ({
   const [selectedCard, setSelectedCard] = useState([]);
   const [currentRound, setCurrentRound] = useState(1);
   const [gameResult, setGameResult] = useState("playing");
+  const flipCardAudioEl = useRef(null);
 
   const unSelectCard = (allCards = [], selectCard) => {
     const cardsList = allCards.filter(
@@ -199,8 +201,25 @@ const GameScreen = ({
     setGameResult("playing");
   };
 
+  useEffect(() => {
+    // play card rotate music after 0.5s
+    const id = setTimeout(() => {
+      if (gameResult === "playing") {
+        flipCardAudioEl.current.volume = 0.2;
+        flipCardAudioEl.current.play();
+      }
+    }, 500);
+
+    return () => clearTimeout(id);
+  });
+
   return (
     <div className={styles.gameScreenContainer}>
+      <audio
+        className={styles.flipCardAudio}
+        ref={flipCardAudioEl}
+        src={flipCardAudioFile}
+      ></audio>
       <div className={styles.cardBoardContainer}>
         <div key={crypto.randomUUID()} className={styles.cardBoard}>
           {pokemonsData.length > 0 && gameResult == "playing" ? (
