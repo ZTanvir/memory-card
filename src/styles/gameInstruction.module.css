@@ -1,18 +1,6 @@
 .instructionMessage {
+  height: 0;
 }
-.instructionMsgSection {
-  animation: fade-in 5s forwards;
-  opacity: 0;
-}
-@keyframes fade-in {
-  form {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
 .instructionMsgSectionContainer {
   display: flex;
   justify-content: flex-end;
