@@ -8,6 +8,9 @@ const AudioPlayManual = forwardRef(
 
     useImperativeHandle(ref, () => {
       return {
+        isAudioplaying() {
+          return isPlaying;
+        },
         playAudio() {
           audioEl.current.volume = 0.2;
           if (isPlaying) {

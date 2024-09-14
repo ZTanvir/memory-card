@@ -204,7 +204,8 @@ const GameScreen = ({
   useEffect(() => {
     // play card rotate music after 0.5s
     const id = setTimeout(() => {
-      if (gameResult === "playing") {
+      const isUiAudioEnable = cardClickMusic.current.isAudioplaying();
+      if (isUiAudioEnable && gameResult === "playing") {
         flipCardAudioEl.current.volume = 0.2;
         flipCardAudioEl.current.play();
       }
