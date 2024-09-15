@@ -127,13 +127,13 @@ function App() {
       </main>
 
       <div className="overlay"></div>
-      {/* <video
+      <video
         className="bgVideo"
         src={mayPokemon}
         autoPlay={true}
         muted={true}
         loop={true}
-      /> */}
+      />
 
       <footer>
         <div className="gameBgMusic">
