@@ -2,7 +2,7 @@ import { forwardRef, useImperativeHandle, useRef, useState } from "react";
 import styles from "../styles/audioStyles.module.css";
 
 const AudioPlayManual = forwardRef(
-  ({ src, playIcon, pauseIcon, playStatus, audioLoop }, ref) => {
+  ({ src, playIcon, pauseIcon, playStatus, audioLoop, title }, ref) => {
     const [isPlaying, setIsPlaying] = useState(playStatus);
     const audioEl = useRef(null);
 
@@ -38,7 +38,11 @@ const AudioPlayManual = forwardRef(
           Your browser does not support the audio element.
         </audio>
         <div className="controls">
-          <button onClick={handlePlayPauseBtn} id={styles.playPauseBtn}>
+          <button
+            title={title}
+            onClick={handlePlayPauseBtn}
+            id={styles.playPauseBtn}
+          >
             {isPlaying ? (
               <span className="material-symbols-outlined">{playIcon}</span>
             ) : (

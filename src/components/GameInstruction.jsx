@@ -33,7 +33,11 @@ const GameInstruction = ({ instructionList, audioDom }) => {
         )}
       </div>
 
-      <button className={styles.instructionMsgBtn} onClick={handleShowHide}>
+      <button
+        title="Instruction"
+        className={styles.instructionMsgBtn}
+        onClick={handleShowHide}
+      >
         <span className="material-symbols-outlined">
           {isHideInstruction ? "question_mark" : "close"}
         </span>

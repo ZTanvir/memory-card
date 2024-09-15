@@ -143,6 +143,7 @@ function App() {
             pauseIcon={"music_off"}
             playStatus={false}
             audioLoop={true}
+            title="Music"
           />
           <AudioPlayManual
             ref={interfaceMusic}
@@ -151,6 +152,7 @@ function App() {
             pauseIcon={"volume_off"}
             playStatus={true}
             audioLoop={false}
+            title="Sound Effects"
           />
         </div>
         <div className="gameInstruction">
