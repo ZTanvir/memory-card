@@ -43,7 +43,7 @@ function App() {
 
   useEffect(() => {
     const getPokemon = async (pokemonId) => {
-      const result = await pokemonService.getSiglePokemon(pokemonId);
+      const result = await pokemonService.getSinglePokemon(pokemonId);
       const { id, name } = result;
       const img = result.sprites.other.dream_world.front_default;
       return { id, name, img };
