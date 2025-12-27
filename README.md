@@ -4,7 +4,7 @@ The Memory Game is an interactive web application designed to test and improve a
 
 [**View Live Demo**](https://ztanvir.github.io/memory-card/) | [**Browse Source Code**](https://github.com/ZTanvir/memory-card)
 
-<video src="https://github.com/user-attachments/assets/2b8f3451-f493-401c-934a-0277900113c3" controls width="600"></video>
+<video src="https://github.com/user-attachments/assets/f71ef9b0-a56e-4c4c-bda5-b0460a9a0030" controls width="600"></video>
 
 ## Core functionalities
 
@@ -54,7 +54,7 @@ const shuffle = (array) => {
 
 ### **Synchronize user interaction with sound:**
 
-<video src="https://github.com/user-attachments/assets/68a7ea18-051b-415a-885e-e0b810fe346c"  width="600"></video>
+<video src="https://github.com/user-attachments/assets/ed8436e9-bac0-4e0d-8391-83235e9138ec"  width="600"></video>
 
 To meet the project's goal of "Mindful Focus," I integrated audio system.
 
